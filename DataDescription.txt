@@ -1,0 +1,62 @@
+Data Description
+In this competition, you are provided a time-series forecasting problem centered around restaurant visitors. The data comes from two separate sites:
+
+Hot Pepper Gourmet (hpg) : similar to Yelp, here users can search restaurants and also make a reservation online
+AirREGI / Restaurant Board (air) : similar to Square, a reservation control and cash register system
+You must use the reservations, visits, and other information from these sites to forecast future restaurant visitor totals on a given date. The training data covers the dates from 2016 until early (first week) April 2017. The test set covers the mid weeks (second and third weeks) of April 2017. The training and testing set both omit days where the restaurants were closed.
+
+File Descriptions
+This is a relational dataset from two systems. Each file is prefaced with the source (either air_ or hpg_) to indicate its origin. Each restaurant has a unique air_store_id and hpg_store_id. Note that not all restaurants are covered by both systems, and that you have been provided data beyond the restaurants for which you must forecast. Latitudes and Longitudes are not exact to discourage de-identification of restaurants.
+
+MetaData
+1. air_reserve.csv
+This file contains reservations made in the air system. Note that the reserve_datetime indicates the time when the reservation was created, whereas the visit_datetime is the time in the future where the visit will occur.
+
+1. air_store_id - the restaurant's id in the air system
+2. visit_datetime - the time of the reservation
+3. reserve_datetime - the time the reservation was made
+4. reserve_visitors - the number of visitors for that reservation
+2. hpg_reserve.csv
+This file contains reservations made in the hpg system.
+
+1. hpg_store_id - the restaurant's id in the hpg system
+2. visit_datetime - the time of the reservation
+3. reserve_datetime - the time the reservation was made
+4. reserve_visitors - the number of visitors for that reservation
+3. air_store_info.csv
+This file contains information about select air restaurants. Column names and contents are self-explanatory.
+
+1. air_store_id
+2. air_genre_name
+3. air_area_name
+4. latitude
+5. longitude
+Note: latitude and longitude are the latitude and longitude of the area to which the store belongs
+
+4. hpg_store_info.csv
+This file contains information about select hpg restaurants. Column names and contents are self-explanatory.
+
+1. hpg_store_id
+2. hpg_genre_name
+3. hpg_area_name
+4. latitude
+5. longitude
+Note: latitude and longitude are the latitude and longitude of the area to which the store belongs
+
+5. store_id_relation.csv
+This file allows you to join select restaurants that have both the air and hpg system.
+
+1. hpg_store_id
+2. air_store_id
+6. date_info.csv
+This file gives basic information about the calendar dates in the dataset.
+
+1. calendar_date
+2. day_of_week
+3. holiday_flg - is the day a holiday in Japan
+train.csv
+This file contains historical visit data for the air restaurants.
+
+1. air_store_id
+2. visit_date - the date
+3. visitors - the number of visitors to the restaurant on the date
